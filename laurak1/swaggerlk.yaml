@@ -1,0 +1,72 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Pizza Ordering API",
+    "description" : "API for ordering pizzas with a choice of toppings",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "paths" : {
+    "/order" : {
+      "post" : {
+        "summary" : "Order a pizza",
+        "operationId" : "orderPizza",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/order_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "default" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_default"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "order_body" : {
+        "type" : "object",
+        "properties" : {
+          "size" : {
+            "type" : "string",
+            "enum" : [ "small", "medium", "large" ]
+          },
+          "toppings" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "enum" : [ "pepperoni", "mushrooms", "onions", "sausage", "bacon", "extra cheese", "black olives", "green peppers", "pineapple", "spinach" ]
+            }
+          }
+        }
+      },
+      "inline_response_default" : {
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          },
+          "orderId" : {
+            "type" : "integer"
+          }
+        }
+      }
+    }
+  }
+}
