@@ -15,7 +15,7 @@
         "operationId" : "orderPizza",
         "requestBody" : {
           "content" : {
-            "application/json" : {
+            "applicatiXXSon/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/order_body"
               }
@@ -40,6 +40,15 @@
   },
   "components" : {
     "schemas" : {
+      "Schema" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
       "order_body" : {
         "type" : "object",
         "properties" : {
